@@ -4,7 +4,8 @@ int wireTransmissionChannel = 50;
 
 void setup() {
   Serial.begin(57600);
-  Wire.begin();
+  Wire.begin(wireTransmissionChannel);
+  Wire.onReceive(receiveEvent);
 }
 
 void loop() {
@@ -20,4 +21,9 @@ void sendWireChar(char ch) {
   Wire.beginTransmission(wireTransmissionChannel);
   Wire.write(ch);
   Wire.endTransmission();
+}
+
+void receiveEvent(int howMany)
+{
+  Serial.println("LBB response test");
 }
