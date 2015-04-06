@@ -1,4 +1,4 @@
-# LBB---Arduino
+# LBB Servo Code
 
 ####Serial write command structure: 
 ######(senzor_id);(senzor_state);(parameter - if needed)
