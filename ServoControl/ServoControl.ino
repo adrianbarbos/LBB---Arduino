@@ -39,7 +39,7 @@ void setup()
 void loop() {}
 
 //Wire receiver methods------------------------------------------------------------------------------------------------------------------------------------------
-
+//TODO: MVD logic
 String receiverWireString;
 
 void receiveEvent(int howMany)
