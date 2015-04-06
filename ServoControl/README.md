@@ -1,6 +1,7 @@
 # LBB---Arduino
 
-####Serial write command structure: (senzor_id);(senzor_state);(parameter - if needed)
+####Serial write command structure: 
+######(senzor_id);(senzor_state);(parameter - if needed)
 
 ####LBB-ENDPOINT-ID
 ######1 - SERVO
