@@ -79,6 +79,9 @@ void wireAction() {
     digitalWrite(redLedPin, LOW);
     Serial.print("Current Servo Position: ");
     Serial.println(readServo());
+    Wire.beginTransmission(wireTransmissionChannel);
+    Wire.write(2);
+    Wire.endTransmission();
   }
   if (option == "3") {
     

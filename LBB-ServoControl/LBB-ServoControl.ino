@@ -3,9 +3,9 @@
 int wireTransmissionChannel = 50;
 
 void setup() {
-  Serial.begin(57600);
   Wire.begin(wireTransmissionChannel);
   Wire.onReceive(receiveEvent);
+  Serial.begin(57600);
 }
 
 void loop() {
