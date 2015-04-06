@@ -1,8 +1,9 @@
 #include <Wire.h>
 #include <Servo.h>
 
-int servoPin = 9;
-int redLedPin = 12;
+int servoPin = 9; //Servo pin
+int redLedPin = 12; // Led Pin
+int sensorPin = 0;
 Servo servo;
 int wireTransmissionChannel = 50;
 
@@ -39,7 +40,7 @@ void setup()
 void loop() {}
 
 //Wire receiver methods------------------------------------------------------------------------------------------------------------------------------------------
-//TODO: MVD logic
+
 String receiverWireString;
 
 void receiveEvent(int howMany)
@@ -78,6 +79,29 @@ void wireAction() {
     digitalWrite(redLedPin, LOW);
     Serial.print("Current Servo Position: ");
     Serial.println(readServo());
+  }
+  if (option == "3") {
+    
+        int reading = analogRead(sensorPin);  
+     
+       // converting that reading to voltage, for 3.3v arduino use 3.3
+       float voltage = reading * 5.0;
+       voltage /= 1024.0; 
+       
+       // print out the voltage
+       Serial.print(voltage); Serial.println(" volts");
+       
+       // now print out the temperature
+       float temperatureC = (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset
+                                                     //to degrees ((voltage - 500mV) times 100)
+       Serial.print(temperatureC); Serial.println(" degrees C");
+       
+       // now convert to Fahrenheit
+       float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
+       Serial.print(temperatureF); Serial.println(" degrees F");
+       
+       delay(1000); 
+    
   }
 }
 
