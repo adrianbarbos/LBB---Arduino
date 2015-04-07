@@ -45,8 +45,8 @@ void serialAction(String str) {
   String option = getValue(str, ';', 0);
   String angleString = getValue(str, ';', 1);
   int angle = angleString.toInt();
-  Serial.println("Option " + option);
-  Serial.println("Angle " + angleString);
+  //Serial.println("Option " + option);
+  //Serial.println("Angle " + angleString);
 
   if (option == "1") {
     writeServo(angle);
@@ -54,32 +54,17 @@ void serialAction(String str) {
   }
   if (option == "2") {
     digitalWrite(redLedPin, LOW);
-    Serial.println("Current Servo Position: ");
-    Serial.print(readServo());    
+    Serial.println("Current Servo Position: " + String(readServo()));
+    //Serial.print(readServo());    
   }
-  if (option == "3") {
-    
-        int reading = analogRead(sensorPin);  
-     
-       // converting that reading to voltage, for 3.3v arduino use 3.3
+  if (option == "3") {    
+        int reading = analogRead(sensorPin);       
        float voltage = reading * 5.0;
        voltage /= 1024.0; 
-       
-       // print out the voltage
-       //Serial.print(voltage); Serial.println(" volts");
-       
-       // now print out the temperature
-       float temperatureC = (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset
-                                                     //to degrees ((voltage - 500mV) times 100)
-       Serial.print(temperatureC); Serial.println(" degrees C");
-       
-       // now convert to Fahrenheit
-       //float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
-       //Serial.print(temperatureF); Serial.println(" degrees F");
-       
-       delay(1000); 
-    
-  }
+       float temperatureC = (voltage - 0.5) * 100 ;
+       Serial.println(String(temperatureC) + " degrees C"); 
+       //Serial.print(" degrees C");
+    }
   
 }
 
