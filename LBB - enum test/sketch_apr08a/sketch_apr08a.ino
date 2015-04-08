@@ -1,3 +1,5 @@
+String lbbIDMethod = "lbbId";
+int lbbIND = 1;
 String enumMethod = "enum";
 int enumCount = 5;
 String enumStr[]= {"enum1", "enum2", "enum3", "enum4", "enum5"};
@@ -5,7 +7,7 @@ String enumVal[]= {"1;R", "2;R", "3;R", "4;W", "5;W"};
 
 void setup() {
   
-  Serial.begin(9600);
+  Serial.begin(57600);
 
 }
 
@@ -14,6 +16,10 @@ void loop() {
   if(Serial.available()) {
   
     String str = Serial.readString();
+    
+    if(str == lbbIDMethod){
+      Serial.println(String(lbbIND));
+    }
     
     if(str == enumMethod){
       Serial.println(String(enumCount));
