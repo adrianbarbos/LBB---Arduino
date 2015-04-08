@@ -2,12 +2,12 @@ String lbbIDMethod = "lbbId";
 int lbbIND = 1;
 String enumMethod = "enum";
 int enumCount = 5;
-String enumStr[]= {"enum1", "enum2", "enum3", "enum4", "enum5"};
-String enumVal[]= {"1;R", "2;R", "3;R", "4;W", "5;W"};
+String enumStr[]= {"enum0", "enum1", "enum2", "enum3", "enum4"};
+String enumVal[]= {"1;R;100;ok", "2;R;100;ok", "3;R;100;ok", "4;W;ok", "5;W;ok"};
 
 void setup() {
   
-  Serial.begin(57600);
+  Serial.begin(9600);
 
 }
 
