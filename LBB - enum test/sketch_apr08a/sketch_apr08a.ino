@@ -18,31 +18,31 @@ void loop() {
     String str = Serial.readString();
     
     if(str == lbbIDMethod){
-      Serial.println(String(lbbIND));
+      Serial.print(String(lbbIND));
     }
     
     if(str == enumMethod){
-      Serial.println(String(enumCount));
+      Serial.print(String(enumCount));
     }
     
     if(str == enumStr[0]){
-      Serial.println(enumVal[0]);
+      Serial.print(enumVal[0]);
     }
     
     if(str == enumStr[1]){
-      Serial.println(enumVal[1]);
+      Serial.print(enumVal[1]);
     }
     
     if(str == enumStr[2]){
-      Serial.println(enumVal[2]);
+      Serial.print(enumVal[2]);
     }
     
     if(str == enumStr[3]){
-      Serial.println(enumVal[3]);
+      Serial.print(enumVal[3]);
     }
     
     if(str == enumStr[4]){
-      Serial.println(enumVal[4]);
+      Serial.print(enumVal[4]);
     }
   
   }
