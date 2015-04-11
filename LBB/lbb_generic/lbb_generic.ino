@@ -1,8 +1,8 @@
 // generic code to run on all lbbs
 
-// kim        lbbIND 2 - temp(R) red(W), green(W), blue(W)
-// Kim        lbbIND 3 - temp(R) red(W), green(W), blue(W)
-// Andrei     lbbIND 4 - temp(R) red(W), green(W), blue(W)
+// kim        lbbIND 2 - temp(R) red(RW), green(RW), blue(RW)
+// Kim        lbbIND 3 - temp(R) red(RW), green(RW), blue(RW)
+// Andrei     lbbIND 4 - temp(R) red(RW), green(RW), blue(RW)
 
 // id and sensors def
 int enumCount = 4;
@@ -11,7 +11,6 @@ int lbbId = 4;
 // proto stuff
 String idMethod = "lbbId";
 String enumMethod = "enum";
-String getMethod = "get";
 String putMethod = "put";
 const char EOPmarker = '.'; //This is the end of packet marker
 char serialbuf[32]; //This gives the incoming serial some room. Change it if you want a longer incoming.
@@ -26,6 +25,9 @@ void setup() {
 void loop() {
   // Get the current ambient temperature in degrees Celsius with a range of -40 C to 87 C.
   int temperature = Bean.getTemperature();
+  
+  LedReading rgbSetting;
+  rgbSetting = Bean.getLed();
 
   // if serial activity detected
   if (Serial.available() > 0) { 
@@ -46,26 +48,22 @@ void loop() {
 
       if (command == enumMethod){
         if (argument == NULL){
-          Serial.print(enumCount);           // enumerate all sensors
+          Serial.print(enumCount);           // enumerate (and get R) all sensors
         } 
-        else if (argument == 1 ){             //enumerate type of sensors     
-          Serial.print("1;R;FIXME;ok");  
+        else if (argument == 1 ){             //enumerate type of sensors   
+          Serial.print("1;R;" + String(temperature) + ";temperature"); 
         } 
         else if (argument == 2) {
-          Serial.print("2;W;FIXME;ok");
+          Serial.print("2;RW;" + String(rgbSetting.red) + ";red");
         } 
         else if (argument == 3) {
-          Serial.print("3;W;FIXME;ok");
+          Serial.print("3;RW;" + String(rgbSetting.green) + ";green"); 
         } 
         else if (argument == 4) {
-          Serial.print("4;W;FIXME;ok");
+          Serial.print("4;RW;" + String(rgbSetting.blue) + ";blue");
         }
       } 
-      else if (command == getMethod){         //get
-        if (argument == 1) {                    // get temp
-          Serial.print(temperature);
-        } 
-      } 
+      
 
       else if (command == putMethod){           // put
         if (argument == 2) {                    // put R
