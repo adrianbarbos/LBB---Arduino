@@ -6,7 +6,7 @@
 
 // id and sensors def
 int enumCount = 4;
-int lbbId = 4;
+int lbbId = 3;
 
 // proto stuff
 String idMethod = "lbbId";
