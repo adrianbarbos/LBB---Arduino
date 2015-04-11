@@ -1,11 +1,12 @@
-// trencadis2 lbbIND 1 - rfid(R) (SoftwareSerial messes up all other LBB stuff - temperature, lights, etc)
+// generic code to run on all lbbs
+
 // kim        lbbIND 2 - temp(R) red(W), green(W), blue(W)
-// andrei     lbbIND 3 - servo, temp
-// Kim        lbbIND 4 - LC
+// Kim        lbbIND 3 - temp(R) red(W), green(W), blue(W)
+// Andrei     lbbIND 4 - temp(R) red(W), green(W), blue(W)
 
 // id and sensors def
 int enumCount = 4;
-int lbbId = 2;
+int lbbId = 4;
 
 // proto stuff
 String idMethod = "lbbId";
