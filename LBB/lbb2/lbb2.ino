@@ -18,8 +18,7 @@ char serialbuf[32]; //This gives the incoming serial some room. Change it if you
 #define MAX_STRING_LEN 20 // like 3 lines above, change as needed.
 
 void setup() {
-  Serial.begin(57600);  
-  Serial.println("Starting");
+  Serial.begin(57600); 
   pinMode(0,OUTPUT);
 }
 
@@ -46,24 +45,24 @@ void loop() {
 
       if (command == enumMethod){
         if (argument == NULL){
-          Serial.println(enumCount);           // enumerate all sensors
+          Serial.print(enumCount);           // enumerate all sensors
         } 
         else if (argument == 1 ){             //enumerate type of sensors     
-          Serial.println("1;R;FIXME;ok");  
+          Serial.print("1;R;FIXME;ok");  
         } 
         else if (argument == 2) {
-          Serial.println("2;W;FIXME;ok");
+          Serial.print("2;W;FIXME;ok");
         } 
         else if (argument == 3) {
-          Serial.println("3;W;FIXME;ok");
+          Serial.print("3;W;FIXME;ok");
         } 
         else if (argument == 4) {
-          Serial.println("4;W;FIXME;ok");
+          Serial.print("4;W;FIXME;ok");
         }
       } 
       else if (command == getMethod){         //get
         if (argument == 1) {                    // get temp
-          Serial.println(temperature);
+          Serial.print(temperature);
         } 
       } 
 
@@ -80,7 +79,7 @@ void loop() {
       }
       
       else if (command == idMethod) {
-         Serial.println(lbbId);
+         Serial.print(lbbId);
       }
       
     }
