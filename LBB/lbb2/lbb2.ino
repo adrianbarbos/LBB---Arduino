@@ -1,13 +1,17 @@
 // trencadis2 lbbIND 1 - rfid(R) (SoftwareSerial messes up all other LBB stuff - temperature, lights, etc)
-// kim        lbbIND 2 - temp(R) red(W), green(W), blue(W), led(W)
+// kim        lbbIND 2 - temp(R) red(W), green(W), blue(W)
 // andrei     lbbIND 3 - servo, temp
 // Kim        lbbIND 4 - LC
 
-// proto part
+// id and sensors def
+int enumCount = 4;
+int lbbId = 2;
+
+// proto stuff
+String idMethod = "lbbId";
 String enumMethod = "enum";
 String getMethod = "get";
 String putMethod = "put";
-int enumCount = 5;
 const char EOPmarker = '.'; //This is the end of packet marker
 char serialbuf[32]; //This gives the incoming serial some room. Change it if you want a longer incoming.
 #include <string.h> // we'll need this for subString
@@ -55,9 +59,6 @@ void loop() {
         } 
         else if (argument == 4) {
           Serial.println("4;W;FIXME;ok");
-        } 
-        else if (argument == 5) {
-          Serial.println("4;W;FIXME;ok");
         }
       } 
       else if (command == getMethod){         //get
@@ -74,12 +75,14 @@ void loop() {
           Bean.setLed(0, value, 0);
         } 
         else if (argument == 4) {             // put B
-          Bean.setLed(0, value, 255);
+          Bean.setLed(0, 0, value);
         } 
-        else if (argument == 5) {             // put led
-          analogWrite(0, value);
-        }
       }
+      
+      else if (command == idMethod) {
+         Serial.println(lbbId);
+      }
+      
     }
   }
 }
